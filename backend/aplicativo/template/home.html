@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% block titulo %} Página Inicial {%endblock%}
+{%block conteudo %}
+
+<h1> Olá médico</h1>
+<p> Irei te ajudar a tomar decisões clínicas</p>
+<p>Será que seu paciente pode ter um ataque cardíaco?</p>
+
+<form action="/resultado" method="post" onsubmit="return validarCaracteriticas()">
+<button type="submit" class="btn btn-primary"> Resultado</button>
+</form>
+{%endblock%}
+
+<script>
+    function validarCaracteriticas(){}
+</script>

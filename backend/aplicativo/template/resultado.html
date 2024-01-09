@@ -1,0 +1,29 @@
+{% extends "resultado.html" %}
+
+{%block titulo %} Resultado: {%endblock%}
+
+{%block conteudo %}
+
+<h1> Diagnostico Proposto {{ prediction }}</h1>
+
+<br>
+
+<div class="card" style="width: 18rem;">
+
+    <div class="card-heder">
+        Probabilidade:
+    </div>
+    
+    <ul class="list-group list-group-flush">
+
+        <li>Positivo: {{ probabilidade.split(" ")[0] }}</li>
+        <li>Negativo: {{ probabilidade.split(" ")[1] }}</li>
+
+    </ul>
+
+</div>
+
+<br>
+
+<a href="/">Voltar para a página inicial</a>
+{%endblock%}
