@@ -7,3 +7,4 @@ python-multipart
 xgboost
 catboost
 scikit_posthocs
+seaborn
