@@ -33,4 +33,29 @@ async def predict(request: Request,
                 angina_em_exercicio: int=Form(...),
                 depressao_ST: float =Form(...),
                 inclinacao_ST:int=Form()
-                  )
+                  ):
+    
+    dados= cardioCaracterísticas(
+        idade=idade,
+        sexo=sexo,
+        dor_peitoral=dor_peitoral,
+        pressao_em_repouso=pressao_em_repouso,
+        colesterol=colesterol,
+        glicemia_posprandial=glicemia_posprandial,
+        eletrocardiograma_em_repouso=eletrocardiograma_em_repouso,
+        frequencia_cardiaca_maxima=frequencia_cardiaca_maxima,
+        angina_em_exercicio=angina_em_exercicio,
+        depressao_ST=depressao_ST,
+        inclinacao_ST=inclinacao_ST
+    )
+
+    dados_df = pd.DataFrame([extrair_valores(dados)], columns=dados.__annotations__.keys())
+    prediction = modelo.predict(dados_df)
+    proba=modelo.predict_proba(dados_df)
+    probability=f"{proba.tolist()[0][1]:.2f}% {proba.tolist()[0][0]:.2f}%"
+    if prediction[0] == 0:
+        pred='Negativo'
+    else:
+        pred='Positivo'
+    return templates.TemplateResponse("resultado.html", {"request": request, "prediction": pred, "probability":probability} )
+                                      
