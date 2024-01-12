@@ -2,7 +2,7 @@ from fastapi import FastAPI,Form, HTTPException,Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
-from caracteristicas import cardioCaracterísticas
+from caracteristicas.cardioCaracterísticas import ataqueCardiaco
 
 import pandas as pd
 import pickle
@@ -35,7 +35,7 @@ async def predict(request: Request,
                 inclinacao_ST:int=Form()
                   ):
     
-    dados= cardioCaracterísticas(
+    dados= ataqueCardiaco(
         idade=idade,
         sexo=sexo,
         dor_peitoral=dor_peitoral,
@@ -57,5 +57,6 @@ async def predict(request: Request,
         pred='Negativo'
     else:
         pred='Positivo'
-    return templates.TemplateResponse("resultado.html", {"request": request, "prediction": pred, "probability":probability} )
+    #return templates.TemplateResponse("resultado.html", {"request": request, "prediction": pred, "probability":probability} )
+    return {'resultado': pred, "probability":probability}
                                       
