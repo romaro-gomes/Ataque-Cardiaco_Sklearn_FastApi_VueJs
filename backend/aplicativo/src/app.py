@@ -1,6 +1,7 @@
 from fastapi import FastAPI,Form, HTTPException,Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from caracteristicas.cardioCaracterísticas import ataqueCardiaco
 
@@ -8,6 +9,16 @@ import pandas as pd
 import pickle
 
 app= FastAPI()
+
+origins = ['http://localhost:5173']
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*']
+)
 
 templates=Jinja2Templates(directory='../template')
 
@@ -20,7 +31,7 @@ def extrair_valores(dados):
 async def home(request: Request):
     return templates.TemplateResponse('home.html', {'request':request})
 
-@app.post('/resultado')
+@app.post('/resultado-formulario')
 async def predict(request: Request,
                 idade:int =Form(...),
                 sexo:str =Form(...),
@@ -32,9 +43,8 @@ async def predict(request: Request,
                 frequencia_cardiaca_maxima: int=Form(...),
                 angina_em_exercicio: int=Form(...),
                 depressao_ST: float =Form(...),
-                inclinacao_ST:int=Form()
+                inclinacao_ST:int=Form(...)
                   ):
-    
     dados= ataqueCardiaco(
         idade=idade,
         sexo=sexo,
@@ -60,3 +70,14 @@ async def predict(request: Request,
     #return templates.TemplateResponse("resultado.html", {"request": request, "prediction": pred, "probability":probability} )
     return {'resultado': pred, "probability":probability}
                                       
+@app.post('/resultado-json')
+async def predict(request: Request, dados:ataqueCardiaco):
+    dados_df = pd.DataFrame([extrair_valores(dados)], columns=dados.__annotations__.keys())
+    prediction = modelo.predict(dados_df)
+    proba=modelo.predict_proba(dados_df)
+    probability=f"{proba.tolist()[0][1]:.2f}% {proba.tolist()[0][0]:.2f}%"
+    if prediction[0] == 0:
+        pred='Negativo'
+    else:
+        pred='Positivo'
+    return {'resultado': pred, "probability":probability}
