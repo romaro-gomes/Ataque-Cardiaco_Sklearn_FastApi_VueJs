@@ -95,9 +95,16 @@
             <div>
                 <input type="submit" value="Enviar Dados do Paciente">
             </div>
+
+            <div v-show="resultado !== null">
+                <p>Resultado: {{ resultado }}</p>
+                <p>Positivo: {{  positivo }}</p>
+                <p>Negativo: {{  negativo }}</p>
+            </div>
         
         </div>
     </form>
+   
 </template>
 
 <script>
@@ -115,6 +122,11 @@ export default{
             angina_em_exercicio:null,
             depressao_ST:null,    
             inclinacao_ST:null,
+
+            resultado: null,
+            positivo: null,
+            negativo: null,   
+            
                  
 
         }
@@ -124,13 +136,14 @@ export default{
         addIdade(){{
             this.idade += 1
         }},
+
         diminuirIdade(){
             if (this.idade <= 0){
                 this.idade === 0
             } else {
             this.idade -= 1
-            }
-        },
+            }},
+
 
         async enviarCaracteristicas(e){
             e.preventDefault();
@@ -146,7 +159,7 @@ export default{
                 frequencia_cardiaca_maxima:this.frequencia_cardiaca_maxima,
                 angina_em_exercicio:this.angina_em_exercicio,
                 depressao_ST: parseFloat(this.depressao_ST),
-                inclinacao_ST: this.inclinacao_ST,           
+                inclinacao_ST: this.inclinacao_ST,       
 
             }
 
@@ -165,7 +178,22 @@ export default{
 
             const res = await req.json()
 
-            console.log(res)    
+            const resultado= res.resultado
+
+            const probabilidade= res.probability
+
+            const probabilidades=  probabilidade.split(' ')
+
+            const positivo = probabilidades[0]
+            const negativo =  probabilidades[1]
+
+            console.log( resultado, positivo, negativo)
+
+            this.resultado = resultado
+            this.positivo = positivo
+            this.negativo = negativo
+
+
     
 
         }
