@@ -75,7 +75,7 @@ async def predict(request: Request, dados:ataqueCardiaco):
     dados_df = pd.DataFrame([extrair_valores(dados)], columns=dados.__annotations__.keys())
     prediction = modelo.predict(dados_df)
     proba=modelo.predict_proba(dados_df)
-    probability=f"{proba.tolist()[0][1]:.2f}% {proba.tolist()[0][0]:.2f}%"
+    probability=f"{(proba.tolist()[0][1])*100:.2f}% {(proba.tolist()[0][0])*100:.2f}%"
     if prediction[0] == 0:
         pred='Negativo'
     else:

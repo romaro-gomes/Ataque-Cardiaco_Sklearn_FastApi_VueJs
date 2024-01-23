@@ -1,13 +1,15 @@
 <template>
-    <header>
-        <img :src="fonte_da_foto" :alt="alternativo" srcset=""> 
+    <header style="display: flex;  align-items: center;">
+        <div>
+        <img :src="fonte_da_foto" :alt="alternativo" srcset="">
+        </div>
+        <div style="align-content: center; margin: auto;">
+        <p style="color: aliceblue; font-size:30px"> Modelo de Predição há Ataques Cardiacos</p>
+        </div>
+        <div>
+        <img :src="fonte_da_foto" :alt="alternativo" srcset="">
+        </div>
     </header>
-    
-    <main>
-    <p class="texto">Olá médico {{ nome }}</p>
-    <p v-if="ativo"> Presente</p>
-    <p class='texto' v-else>Ausente</p>
-    </main>
 </template>
 
 <script>
