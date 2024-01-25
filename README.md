@@ -33,10 +33,6 @@ Referências:
 
 ```bash
 
-## Uso
-
-### Máquina Local
-
 #### Instalar bibliotecas Python
 
 pip install backend\requirements.txt
