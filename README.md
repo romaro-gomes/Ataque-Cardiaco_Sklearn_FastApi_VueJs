@@ -31,18 +31,7 @@ Referências:
 
 ## Uso
 
-### Máquina Local
-
-#### Instalar bibliotecas Python
-
 ```bash
-pip install -r backend\requirements.txt
-
-
-## Metodologia
-
-- [Análise Exploratória dos Dados](backend\ml\eda)
-- [Treianemnto  do Modelo](backend\ml\modelo\notebook\treinamento)
 
 ## Uso
 
