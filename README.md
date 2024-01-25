@@ -26,8 +26,8 @@ Referências:
 
 ## Metodologia
 
-- [Análise Exploratória dos Dados](backend\ml\eda)
-- [Treinamento do Modelo](backend\ml\modelo\notebook\treinamento)
+- [Análise Exploratória dos Dados](backend/ml/eda)
+- [Treinamento do Modelo](backend/ml/modelo\notebook/treinamento)
 
 ## Uso
 
@@ -63,4 +63,4 @@ npm install vue
 
 **cd frontend\app** npm run dev
 
-
+```
