@@ -50,6 +50,9 @@ npm install vue
 
 ```
 
+
 # Demostração
 
+<center>
 ![](modelo.gif)
+</center>
