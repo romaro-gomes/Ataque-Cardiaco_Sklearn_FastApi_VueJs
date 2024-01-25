@@ -3,7 +3,7 @@
         <div class="caracteristicas">
             <div class="linha-centralizada">
                 <div>
-                    <label for="">Idade: </label>
+                    <label for=""  class="titulo">Idade: </label>
                     <input v-model='idade' type="number">
                     <div id="alerta" v-show="mostrarAlertaIdade">
                         <p>
@@ -14,7 +14,7 @@
                 </div>
 
                 <div>
-                    <label for="">Sexo: </label>
+                    <label for=""  class="titulo">Sexo: </label>
                     <input v-model='sexo' type="radio" value="0">
                     <label for="">Masculino</label>
                     <input v-model='sexo' type="radio" value="1">
@@ -24,22 +24,22 @@
 
             <div class="linha">
                 <div>
-                    <label for="">Frequencia Cardiaca Máxima: </label>
+                    <label for=""  class="titulo">Frequencia Cardiaca Máxima: </label>
                     <input v-model='frequencia_cardiaca_maxima' type="number">
                 </div>
 
                 <div>
-                    <label for="">Colesterol: </label>
+                    <label for=""  class="titulo">Colesterol: </label>
                     <input v-model='colesterol' type="number">
                 </div>
 
                 <div>
-                    <label for="">Pressao em Repouso: </label>
+                    <label for=""  class="titulo">Pressao em Repouso: </label>
                     <input v-model='pressao_em_repouso' type="number">
                 </div>
 
                 <div>
-                    <label for="">Depressão ST (Entre -2.5 e 6.5): </label>
+                    <label for=""  class="titulo">Depressão ST (Entre -2.5 e 6.5): </label>
 
                     <input v-model='depressao_ST' type="number">
                     <div id="alerta" v-show="mostrarAlertaDepressaoST">
@@ -54,34 +54,44 @@
             <div class="linha">
 
                 <div>
-                    <label for="">Glicemia Pos-Pandrial: </label>
-                    <input v-model='glicemia_posprandial' type="radio" value="0">
-                    <label for="">0</label>
-                    <input v-model='glicemia_posprandial' type="radio" value="1">
-                    <label for="">1</label>
-                </div>
-
-                <div>
-                    <label for="">Eletrocardiograma em Reposuo: </label>
+                    <p>
+                    <label for=""  class="titulo">Eletrocardiograma em Reposuo: </label>
+                    </p>
                     <input v-model='eletrocardiograma_em_repouso' type="radio" value="0">
-                    <label for="">0</label>
+                    <label for="">Normal</label>
                     <input v-model='eletrocardiograma_em_repouso' type="radio" value="1">
-                    <label for="">1</label>
+                    <label for="">Onda ST-T anormal</label>
                     <input v-model='eletrocardiograma_em_repouso' type="radio" value="2">
-                    <label for="">2</label>
+                    <label for="">Hipertrofia do Ventriculo Esquerdo</label>
                 </div>
 
                 
                 <div>
-                    <label for="">Inclinação ST: </label>
+                    <p>
+                    <label for=""  class="titulo">Inclinação ST: </label>
+                    </p>
                     <input v-model="inclinacao_ST" type="radio" value=0>
-                    <label for="">0</label>
+                    <label for="">Normal</label>
                     <input v-model="inclinacao_ST" type="radio" value=1>
-                    <label for="">1</label>
+                    <label for="">Ascendente/Upsloping</label>
                     <input v-model="inclinacao_ST" type="radio" value=2>
-                    <label for="">2</label>
+                    <label for="">Plana</label>
                     <input v-model="inclinacao_ST" type="radio" value=3>
-                    <label for="">3</label>
+                    <label for="">Descendente/Downsloping</label>
+                </div>
+
+                <div>
+                    <p>
+                    <label for=""  class="titulo">Tipo de Dor Peitoral: </label>
+                    </p>
+                    <input v-model="dor_peitoral" type="radio" value=1>
+                    <label for="">Angina Típica</label>
+                    <input v-model="dor_peitoral" type="radio" value=2>
+                    <label for="">Angina Atípica</label>
+                    <input v-model="dor_peitoral" type="radio" value=3>
+                    <label for="">Não Angínica</label>
+                    <input v-model="dor_peitoral" type="radio" value=4>
+                    <label for="">Assíntomatica</label>
                 </div>
 
             </div>
@@ -89,24 +99,24 @@
             <div class="linha-centralizada">
                 
                 <div>
-                    <label for="">Angina em Exercício: </label>
+                    <p>
+                    <label for="" class="titulo">Angina em Exercício: </label>
+                    </p>
                     <input v-model='angina_em_exercicio' type="radio" value="0">
-                    <label for="">0</label>
+                    <label for="">Não</label>
                     <input v-model='angina_em_exercicio' type="radio" value="1">
-                    <label for="">1</label>
+                    <label for="">Sim</label>
                 </div>
 
 
                 <div>
-                    <label for="">Tipo de Dor Peitoral: </label>
-                    <input v-model="dor_peitoral" type="radio" value=1>
-                    <label for="">1</label>
-                    <input v-model="dor_peitoral" type="radio" value=2>
-                    <label for="">2</label>
-                    <input v-model="dor_peitoral" type="radio" value=3>
-                    <label for="">3</label>
-                    <input v-model="dor_peitoral" type="radio" value=4>
-                    <label for="">4</label>
+                    <p>
+                    <label for=""  class="titulo" >Glicemia Pos-Pandrial: </label>
+                    </p>
+                    <input v-model='glicemia_posprandial' type="radio" value="0">
+                    <label for="">Não</label>
+                    <input v-model='glicemia_posprandial' type="radio" value="1">
+                    <label for="">Sim</label>
                 </div>
 
                 
@@ -268,6 +278,8 @@ export default {
 
             this.mostrarAlertaDepressaoST = false;
             this.mostrarAlertaIdade = false;
+
+            this.resultado = null;
         },
 
 }
@@ -327,6 +339,16 @@ export default {
     font-size: 15px;
     background-color: black;
     color: aliceblue;
+    font-weight: bold;
+}
+
+label{
+    font: 1em sans-serif;
+}
+
+
+.titulo{
+    font-size: medium;
     font-weight: bold;
 }
 </style>
