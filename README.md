@@ -53,6 +53,6 @@ npm install vue
 
 # Demostração
 
-<div style="text-align:center">
+<center>
 ![](modelo.gif)
-</div>
+</center>
