@@ -39,7 +39,7 @@
                 </div>
 
                 <div>
-                    <label for=""  class="titulo">Depressão ST (Entre -2.5 e 6.5): </label>
+                    <label for="" class="titulo">Depressão ST (-2.5 à 6.5): </label>
 
                     <input v-model='depressao_ST' type="number">
                     <div id="alerta" v-show="mostrarAlertaDepressaoST">
@@ -117,9 +117,7 @@
                     <label for="">Não</label>
                     <input v-model='glicemia_posprandial' type="radio" value="1">
                     <label for="">Sim</label>
-                </div>
-
-                
+                </div>               
 
             </div>
 
@@ -131,7 +129,8 @@
                 <div style='margin: 0px;'>
                     <p
                         style='color:white; background-color: black; display: inline-block; font-size: 30px; padding: 20px;text-decoration: solid;'>
-                        Resultado: {{ resultado }}</p>
+                        Resultado: {{ resultado }}
+                    </p>
                 </div>
                 <div style='margin: 0px; font-size: 20px;'>
                     <p>Positivo: {{ positivo }}</p>
@@ -328,7 +327,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:50px
+    gap:40px
 }
 
 .botao{
